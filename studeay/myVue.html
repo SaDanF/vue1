@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue/myVue.js"></script>
+</head>
+<body>
+<div class="app">
+{{msg}}
+    <button @click="sayHi">hi</button>
+
+</div>
+<script>
+    const vm = new Vue({
+        el:'.app',
+        data:{
+            msg:'hello Vue',
+            _name:'lisi',
+            age:22
+            // 21:12
+        },methods :{
+            sayHi(){
+                alert('hi')
+            },
+            sayHell() {
+                alert('hell')
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

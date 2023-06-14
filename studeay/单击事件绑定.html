@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="../vue/vue.js">
+
+  </script>
+</head>
+<body>
+<div class="app">
+<!--    如果不传递参数可以省掉小括号-->
+    <button @click="sayHell">
+        sayHell
+    </button>
+<!--    -->
+    <button @click="name($event,'name')">
+        name
+    </button>
+
+</div>
+
+<script>
+    const vm = new  Vue({
+        el:'.app',
+        data:{
+
+        },
+        methods :{          //methods 是没有做数据代理的
+            sayHell(){
+                alert('sayHell')
+            },
+            name($event,name){
+                console.log(name,event)
+            }
+        }
+    })
+</script>
+</body>
+</html>

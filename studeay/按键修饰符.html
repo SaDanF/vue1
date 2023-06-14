@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue/vue.js"></script>
+</head>
+<body>
+    <div class="app">
+<!--        按键修饰符 后面可以跟acll值-->
+<!--        常用的按键  .enter  回车键
+                      .tab    长空格键  必须配和keydown使用
+                      .delete (捕获“删除”和“退格”键)
+                      .esc    左上角的那个键
+                      .space  空格间 32
+                      .up     上箭头
+                      .down   下箭头
+                      .left   左箭头
+                      .right  右箭头-->
+        <input type="text" @keyup.13="getInfo">
+        <input type="text" @keydown.enter="getInfo">
+        <input type="text" @keydown.tab="getInfo">
+        <input type="text" @keyup.arrow-up="getInfo">
+<!--        自定义获取键盘键的字母-->
+        <input type="text" @keyup.page-down="getInfo">
+<!--        自定义一个按键-->
+        <input type="text" @keyup.huiche="getInfo">
+<!--        keyup 按下ctrl和组合按键松开的时候才会弹出对应的-->
+        keyup<input type="text" @keyup.ctrl="getInfo">
+        keydown<input type="text" @keydown.ctrl="getInfo">
+<!--        按下ctrl和组合按键并且是i的时候才会生效 -->
+        keyup<input type="text" @keyup.ctrl.i="getInfo">
+        keydown<input type="text" @keydown.ctrl.i="getInfo">
+    </div>
+<script>
+    Vue.config.keyCodes.huiche=65
+    const vm = new Vue({
+        el:'.app',
+        data:{
+            msg:'msg'
+        },
+        methods:{
+            getInfo(event){
+                console.log(event.target.value)
+                console.log(event.key)
+            }
+        }
+    })
+</script>
+</body>
+</html>

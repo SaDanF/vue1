@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue/vue.js"></script>
+</head>
+<body>
+<div class="app">
+    {{msg}}
+    <form @submit.prevent="send">
+<!--        @submit 是提交 prevent是阻值默认提交事件 -->
+<!--        <form @submit.prevent="send">-->
+        <label>
+                用户名<input type="text" v-model.trim="user.username"><br>
+                密码<input type="password" v-model.lazy="user.userpassword"><br>
+                年领<input type="number" v-model.number="user.userage"><br>
+                性别
+                男<input type="radio" name="gender" value="1" v-model="user.gender">
+                女<input type="radio" name="gender" value="0" v-model="user.gender"><br>
+                爱好
+                旅游 <input type="checkbox" value="ly" v-model="user.interest">
+                运动<input type="checkbox" value="yd" v-model="user.interest">
+                唱歌<input type="checkbox" value="cg" v-model="user.interest"><br>
+                <button>tijiao</button>
+<!--            click点击事件 阻值默认提交-->
+                <button @click.prevent="send">tijiao1</button>
+            </label>
+        </form>
+
+    </div>
+    <script>
+    const vm = new Vue({
+        el: '.app',
+        data: {
+            user:{
+                username:'',
+                userpassword:'',
+                userage:'',
+                gender:'1',
+                interest:['ly'],
+            },
+            msg: "12121212",
+
+        },methods:{
+            send(){
+                alert('提交')
+            //    把数据打包成json格式的传递
+                console.log(JSON.stringify(this.user))
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

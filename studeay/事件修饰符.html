@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="../vue/vue.js"></script>
+    <style>
+        .divList{
+            width:300px;
+            height: 200px;
+            background-color: aqua;
+            overflow: auto;
+        }
+        .item{
+            width:300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <h1>{{mag}}</h1>
+
+    <!--          在事件绑定的后面加上修饰符 -->
+    <div @click="san">
+        <div @click.stop="er">
+            <button @click="yi">
+                事件冒泡
+            </button>
+        </div>
+    </div>
+<!--    prevent事件的停止 终止-->
+    <a href="单击事件绑定.html" @click.prevent="yi">baidu</a>
+
+<!--    capture 从内向外的事件捕获-->
+    <div @click="san">
+        <div @click.capture="er">
+            <button @click.stop="yi">
+                事件破获
+            </button>
+        </div>
+    </div>
+
+<!--    self 只执行自己的冒泡事件 别人传递过来的事件不执行-->
+    <div @click="san">
+        <div @click.self="er">
+            <button @click="yi">
+                self
+            </button>
+        </div>
+    </div>
+
+
+    <!--。once事件只发生一次-->
+    <button @click.once="yi()">once</button>
+
+<!--    事件太卡的话会导致网页变卡 加上passive的话可以优先画面 减少加载-->
+    <div class="divList" @wheel.passive="testPassive">
+        <div class="item">div1</div>
+        <div class="item">div2</div>
+        <div class="item">div3</div>
+    </div>
+
+
+
+</div>
+
+
+<script >
+    const vm  = new Vue({
+        el:'.app',
+        data:{
+            mag:'事件修饰符'
+        },
+        methods:{
+            yi(){
+                alert('yi12123')
+            },
+            er(){
+                alert('er')
+            },
+            san(){
+                alert('san')
+            },
+            testPassive(event){
+                //这里过高的话会导致系统的内存转不过来 ，会导致页面变卡 可以使用passive
+                for (let i = 0; i  < 1000; i++) {
+                    console.log('passive')
+                }
+
+            //    阻值事件的默认行为
+                //event.preventDefault()
+            }
+
+        }
+    })
+</script>
+
+</body>
+</html>

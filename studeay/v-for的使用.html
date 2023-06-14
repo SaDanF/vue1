@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue/vue.js"></script>
+    <style>
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    {{msg}}
+    <input type="text" v-model="keyword" placeholder="关键字搜索">
+    <table>
+        <tr>
+            <th> 序号</th>
+            <th>name</th>
+            <th>prwer</th>
+            <th> checkbox</th>
+        </tr>
+        <tr v-for="(hero,index) in newheros">
+            <td> {{index + 1}}</td>
+            <td>{{hero.name}}</td>
+            <td>{{hero.power}}</td>
+            <td><input type="checkbox"></td>
+        </tr>
+    </table>
+    <!--    <button v-model="number"> {{number}}</button>-->
+    <!--    <template v-if="number===3">-->
+    <!--    <h1>{{msg}}</h1>-->
+    </template>
+</div>
+<script>
+    const vm = new Vue({
+        el: '.app',
+        data: {
+            number: 2,
+            msg: 'v-for的使用',
+            heros: [
+                {id: '101', name: '文', power: 1},
+                {id: '102', name: '文二', power: 12}
+            ],
+            keyword: '',
+            newheros: []
+        },
+        watch: {
+            keyword: {
+                immediate: true,
+                handler(value) {
+                    this.newheros = this.heros.filter((hero) => {
+                        return this.hero.name.indexOf(value) >= 0
+                    })
+                }
+            }
+        }
+
+    })
+</script>
+
+</body>
+</html>

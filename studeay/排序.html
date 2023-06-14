@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue/vue.js"></script>
+    <style>
+        tr,td,th{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <input type="text" placeholder="筛选">
+    <br>
+    <button >升序</button>
+    <button>降序</button>
+    <button>原序</button>
+    <table>
+        <tr>
+            <th>序号</th>
+            <th>name</th>
+            <th>number</th>
+        </tr>
+        <tr v-for="(heros,index) in newarr" :key="hero.id">
+            <td>{{index+1}}</td>
+            <td>{{heros.id}}</td>
+            <td>{{heros.name}}</td>
+            <td>{{heros.number}}</td>
+        </tr>
+    </table>
+</div>
+<script>
+    const vm = new Vue({
+        el: '.app',
+        data: {
+            heros: [
+                {id: 11, name: '01', number: 12},
+                {id: 22, name: '02', number: 121},
+                {id: 33, name: '13', number: 143}
+            ]
+            ,
+            type:0,
+            keyword:''
+        },
+        computed: {
+            newarr(){
+                const arr=this.heros.filter((heros)=>{
+                    return heros.name.indexOf(this.keyword)>=0
+                })
+                if(this.type===1){
+                    arr.sort((a,b)=>{
+                        return a.power-b.power
+                    })
+                }else if(this.type===2){
+                    arr.sort((a,b)=>{
+                        return b.power-a.power
+                    })
+                }
+                return arr
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,470 @@
+SON.stringify(this.user)    把数据传递给后端通过json
+
+v-on : 事件名="表达式" 是事件的绑定  必须在new Vue中的methods 写
+        简写是:v-on:click        @click
+              v-on:keydown      @keydown
+              v-on:mouseover    @mouseover
+v-cloak     解决延迟问题 假设还没有加载出页面可以使其不显示后加载出后显示
+v-once      只渲染一次 只有在访问的时候渲染
+v-pre       没有语法之类的时候可以使用可以提高编译速度
+
+事件修饰符
+    .stop       停止事件冒泡 等同与event.stopPropagation
+    .prevent    阻值事件的默认行为 等同与event.preventDefault
+    .capture    添加事件监听模式 从外到内的 没有加的剩余内层使用的还是冒泡 冒泡是从内到外
+    .self       自己的发生的事件才会执行别人传过来的不会执行 等同与阻值当层的冒泡
+    .once       事件只发生一次
+    ,passive
+    .trim       去除前后空格
+    .number     转换成数字
+    .lazy       失去焦点后 记录
+
+按键修饰符
+    .enter  回车键
+    .tab    长空格键  必须配和keydown使用
+    .delete (捕获“删除”和“退格”键)
+    .esc    左上角的那个键
+    .space  空格间 32
+    .up     上箭头
+    .down   下箭头
+    .left   左箭头
+    .right  右箭头
+    系统修饰符
+    ctrl  keydown事件的话只要按下ctrl keyup的话需要按下ctrl并按下组合按键松开后才生效
+    alt
+    shift
+    meta 对应的command
+
+computed 和watch 如果都能完成一个事件 优先使用computed 在异步的时候只能用watch
+    箭头函数只有在不是vue管理的时候用 普通函数在vue管理的时候用
+
+SON.stringify(this.user)
+
+
+scoped      局部的意思 作用在style中如果有全局的样式和自定义的样式 scoped作用在自己的上面
+
+
+data表示数据 methosd表示方法  computed表示计算属性
+                             在computed中有immediate在初次使用就执行handeler  deep深度监视
+钩子函数 beforeCreate create    在init方法前 在构造前
+        berforeMount mounted    在绑定前执行 绑定后执行
+        berforUpdata updata     在更新前执行 更新后执行
+        berforDestroy destroyed 在销毁钱执行 销毁后执行
+components  接受暴露出的引入
+
+。class #id 大的直接上标签
+margin 表示盒子的外边距 可以加left bottom下面 top上面
+
+
+js部分
+
+数组常用方法
+push() 从后面追加
+pop() 从后面删除
+unshift() 从前面添加
+shift() 从前面删除
+reverse() 反转数组
+splice() 截取并添加
+sort() 数组排序
+join() 数组链接为字符串
+concat() 拼接数组
+slice() 截取数组
+indexof() 查找数据在数组中的索引
+forEach() 遍历数组
+map() 映射数组
+filter() 过滤数组
+every() 判断是否全部满足条件
+some() 判断是否有满足条件的项
+
+字符串常用方法
+charAt() 按照索引获取字符
+toLowerCase() 转小写
+toUpperCase() 转大写
+replace() 替换字符串
+trim() 去除首尾空格
+splist() 切除字符串
+substr() 截取字符串
+substring() 截取字符串
+slice() 截取字符串
+
+数字常用的函数
+rendom()    0~1之间的随机小数
+round()     四舍五入取整
+ceil()      向上取整
+fioor()     向下取整
+pow()       取幂
+sqrt()      二次方根
+abs()       绝对值
+max()       最大值
+min()       最小值
+PI          近似π的值
+获取随机整数的方法
+var res= Math.floor(Math.random()*11)       //取到0~1之间的小数*11 向下取整
+
+时间常用的方法
+getFullYear()       setFullYear(number)     年
+getMonth()          setMonth(number)        月
+getDate()           setDate(number)         日
+getHours()          setHours(number)        小时
+getMinutes()        setMinutes(number)      分钟
+getSeconds()        setSeconds(number)      秒钟
+GetDay()                                    时间
+getTime()           setTime(number)         根据时间戳写出毫秒
+获取两个时间之间的差再js01
+
+定时器
+setInterval(function (){},1000)         间隔定时器
+setTimeout(function (){},1000)          延时定时器
+clearInterval(定时器名)                  关闭定时器
+clearTimeout(定时器名)
+
+DOM的操作
+1、获取元素 document.getElementById()
+           document.getElementClassName()
+           document.getElementByTagName()
+           document.querySelector()
+           document.querySelectorAll()
+2、操作元素内容 文本内容：元素.innerText
+               超文本内容：元素.innerHTML
+3、操作元素原生属性 获取：元素.属性名
+                  设置：元素.属性名=‘属性值’
+4、操作元素自定义属性 获取：元素.getAttribute()
+                    设置：元素.setAttribute()
+                    删除：元素.removerAttribute()
+5、操作元素类名 获取：元素.className
+               设置：元素.className='新类名'
+6、操作元素行内样式 获取：元素.style.样式名
+                  设置：元素.style.样式名='样式值'
+7、获取元素行内样式 Windio.getComputedStyle(元素).样式名
+
+DOM的节点操作
+创建节点 document.createElement('标签名')
+插入节点 父节点.appendChild(子节点)
+        父节点.insertBefore(要插入的子节点 哪一个子节点的前面)
+删除节点 父节点.removerChild(子节点)
+        节点.remove()
+替换节点 父节点.replaceChild(换上节点，换下节点)
+克隆节点 节点.cloneNode(是否克隆后代节点)  true flase
+
+DOM获取元素尺寸
+元素.offsetHeight
+元素.offsetWidth
+获取：元素 内容+padding +border 区域的尺寸
+
+元素.clientHeight
+元素.clientWidth
+获取：元素 内容+padding 区域的尺寸
+
+阻止事件传播 事件对象.stopPropagation()
+
+操作元素文本内容
+html==innerHTML  .html( set  content )  可以识别标签
+text==innerText  .text(set content)  不可以识别标签
+val==innerValue  .val(set content)  设置表单元素
+
+操作元素属性
+addClass() 添加元素
+removeClass() 删除元素
+toggleClass() 有那个元素就删除 没有就添加
+
+操作元素样式
+.css 可以单独设置一个样式，也可以设置多个样式，可以读到样式的属性
+
+操作元素属性
+attr()  可以设置和获取元素的属性  一般用在操作元素的自定义属性 attr
+                                操作的所有属性都会直接出现在元素标签上
+        获取 元素.attr(获取的名字)
+        设置 元素.attr(属性名，属性值)
+        删除 元素.removeAttr(需要删除的属性名)
+prop()  可以设置元素的原生（自定义）属性直接影响在元素标签身上
+        设置元素.prop(属性名，属性值)
+        获取元素内容.prop(需要获取的属性名)
+        删除属性.removeProp(元素名)     只能删除自定义的原生属性
+
+元素偏移量 offset() 获取元素的左上角的位置
+
+绑定事件 on()可执行多次 one()只能执行一次
+        element.on('eventType',function)        element对应的event type执行 function
+        element.on('eventType','p',function)    element下的p 对应的event type 执行function
+        element.on({click:function,mouseover:function})  element对应的event types
+
+        hover() 元素集合.hover function只有一个的时候移入出的时候触发 两个的时候移入 移出
+        $('div').hover({function(){console.log('1')}})
+
+        常用处理函数
+        click mouseover mouseout change
+
+事件解绑 off(eventType) off('eventType','event name')
+事件触发 trigger(eventType) 可以和setInerval 定时任务一起用
+
+
+
+
+
+
+
+Vue的差值{{}}中可以写在data中
+        常量 data中声明的变量函数 javascript表达式 白名单中的函数之类的
+
+指令 v-if:true true的haul渲染显示这个标签 false不显示
+     v-one 只显示一次渲染的 更新之后不会再次渲染
+     v-bind:变量名="参数"  常用在标签中 参数可以是动态的数据 在data中传递 更新参数
+                可以简写成:变量名="参数" 单向传递 data==>试图
+     v-model:value="参数" 通常在作用在value中 只能作用在input select texttarea中
+                可以简写为 v-model="参数" 双向传递 data<==>试图
+     V-if=关系表达式 如果为true就显示 如果为false就不显示  中间不可以有别的语句
+     v-else-if 等同于if{}else if{}
+     v-show="true or false" true显示 false不显示会显示display none
+
+
+在内容中使用差值语法 在标签中使用指令
+
+templat 占位符 不会破坏结构直到符合条件的时候才会显示
+
+data表示数据 methosd表示方法  computed表示计算属性
+                             在computed中有immediate在初次使用就执行handeler  deep深度监视
+
+data            数据存放
+el              链接标签
+components      组件的注册
+
+vue的扩展 和min是同级的
+mixin           混入 外部引入
+plugins         插件的定义 引入的话使用use引入在min.js中
+scoped          局部样式 同样的样式名 加上他可以区分定义在局部一般在app中不会加
+
+事件的传递
+父传子  props
+子传父  使用自定义事件 app是父组件 在按钮成使用 @自定义名=接受的方法名
+        在父组件中绑定事件  定义接受的方法
+        在子组件中触发事件  发送方法名(){this.$emit('event',this.name)}
+        父绑定 子触发
+
+$off            解绑事件
+$emit           触发事件
+$destroy        销毁当前实例
+$refs           寻找在标签上的ref 进行运算
+$on             绑定事件
+
+全局事件总线 爷父子之间传递 子向父传数据 子进行$emit触发 父负责$on绑定
+
+父向子传数据 使用props
+子向父传数据 第一种、父向子传一个函数 子接受这个函数 然后子去调用这个函数 通过这个函数向父传递
+            第二种、组件的自定义事件 绑定事件$on负责接受数据
+                                   触发事件$emit负责发送数据
+全局事件总线 可以完成所有的组件之间的数据传递
+
+
+
+
+
+Vuex 怎么使用
+Vue.use(Vuex)
+//简写
+export default new Vuex.Stroe({actions,mutations,state})
+
+在min.js中加上stroe属性
+
+
+actions是专门处理逻辑的中写方法直接调用就可以 	放在methods
+mustations 				放在methods
+state 是存放数据内容的			放在computed
+getter 类似于正常的computed属性 计算属性	放在computed
+
+使用map的时候需要引用进来 import {mapState,mapGetters}from 'vuex'
+	improt {mapState,mapGetters}from 'vuex'
+	computed:{
+		//mapState 类于data  只要是$store.state 作为前缀的就可以用他来代替 可以放在computed中
+		...mapState(['users','vips','uname'])
+		//mapGetters 类似computed
+		...mapGtter(['reversed'])
+		}
+	methods:{
+		//走的mutations 代替的是commit
+		mapMutations:{
+		//...mapMutations({saveVip,'SAVE_VIP'})
+		...mapMutations(['SAVE_VIP'])
+			}
+		//走的actions 代替的是dispatch
+		...mapAuctions:{
+				//saveUser(){this.$store.dispatch('saveUser',this.name)} 需要三个参数 第一个方法名 cilk点击的方法
+				//第二个是actions中的saveUser方法 第三个value写在clik上
+			saveUser:'saveUser'
+			}
+			[saveUser]
+		}
+
+app.vue
+methods:{
+pluone(){
+this.$store.dispath('plusOne',this.number)
+}
+}
+
+store.js
+//在actions中处理逻辑 只处理逻辑，可以调用一actions下的多个方法
+//配合的dispath使用
+const actions={
+	//第一个参数 是Vuex的上下文 第二个是传过来的参数
+	plusOne(context,value){
+		value=value+1
+		//context就像是一个
+		context.dispatch('a',value)
+		context.commit('PLUS_ONE',value)
+}
+	a(context,value){console.log('a')}
+}
+//一般在这里面进行渲染
+const mutations={
+	//一般大写 state状态对象 value 是从actions中拿出来的数据
+	PLUS_ONE(state,value){
+	state.num+=value}
+}
+const state={
+	num=0}
+
+//getters 类似于computed属性 计算属性
+const getters={
+	reversedName(state){
+		return state.username.split.reverse().join('')
+	}
+}
+
+export default new Vuex.store({actions,mutations,state,getters})
+
+
+怎么把字符串进行翻转 显示
+username.split('').reverse().join('')
+
+
+模块性开发
+export default{
+	//怎么使用 调用方加前面加上模块名
+	const actions={namespaced=true}
+	//怎么使用 调用方加上前面加上模块名
+	const mutations={}
+	//怎么使用前面加上模块名
+	const state={}
+	//怎么使用 前面加上模块名
+	const getter={}
+	}
+
+import default aModule from './a'
+export default new Vue.store({modules:{aModule}})
+
+a.vue
+<script>
+improt{mapState,mapGetter,mapActions,mapmutations} from 'vuex'
+export default{
+	name:'a',
+	computed:{
+		..mapState('aModule',['a']),
+		..mapGetter('bModule',['a'])
+		}
+	methods:{
+		..mapActions('aModule',['a'])
+		..mapMutations('bModule',['a'])
+		}
+}
+</script>
+
+
+怎么发送ajax请求
+
+a.vue
+import default {mapaction} from 'vuex'
+<button @click=displayBug>bugList</button>
+export default:{
+	...mapactions:{'aModule','displayBug'}
+	}
+
+strote.js
+import default{actions}from './vuex'
+import defalu axios from 'axios'
+const a={
+	namespace=true
+	actions:{
+		displayBug(context){axios.get('/api/test/bug').then(
+		response=>{const.commit('DISPLAY_BUG',response.data)}
+		)}
+	}
+	mutations:{
+		DISPLAY_BUG(strte,value){
+					strte.bugList =value
+					}
+	},
+	strte:{
+	bugList:[]
+}
+	}
+
+
+active-class 意思是激活的时候出现对应的样式，没有激活不出现样式
+
+路由 route
+路由器 router
+1、按装插件npm i vue-router@3   vue2使用3 vue3使用4
+2、在main中使用先导入
+	1.导入路由插件 import VueRouter from 'vue-router'
+	2.创建专门的存放router的一个js文件，导入路由对象 import router from './router/index.js'
+	3.使用Vue.use(VueRouter)
+	4. 在newVue中加上router：router，表示使用router
+3.在router/index.js中
+	1、导入组件henan 和vueRouter
+	2、const router =new VueRouter({router:[{path:'/henan',component:henan,chidren:[{}]},{}]}) path相当于key component相当于value chidren 子组件
+	3、export default router
+4.在app.Vue中使用
+	想使用哪个 使用标签<router-link to='/henan'  active-class='selected'>
+	使用<router-view>作为占位符 显示
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

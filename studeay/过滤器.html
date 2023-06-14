@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+<!--{{number|filterNumber}}-->
+    <h1 v-cloak>{{number}}</h1>
+</div>
+<script>
+    setTimeout(()=>{
+        const scr =document.createElement('script')
+        scr.src='../vue/vue.js'
+        document.head.append(scr)
+    },3000)
+    setTimeout(()=>{
+        const vm = new Vue({
+            el: '.app',
+            data: {
+                number: 12
+            },
+    },4000)
+
+        // filters: {
+        //     filterNumber(val) {
+        //         if (val === null || val === '') {
+        //             return '-'
+        //         }
+        //         return val
+        //     }
+        //
+        // }
+    })
+</script>
+
+</body>
+</html>
